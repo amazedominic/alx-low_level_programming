@@ -2,18 +2,18 @@
 
 /**
  * print_all - prints any argument passed to it
- * @format: the argument specifier
- * Return: any argument given based on format specifier
+ * @format: argument specifier
+ * Return: any argument given based on specified format
  */
 
 void print_all(const char * const format, ...)
 {
-	int i, stats;
+	int i, stats; /* declare variable and va_arg datatype */
 	char *str;
 
 	va_list type;
 
-	va_start(type, format);
+	va_start(type, format); /* initialize var arguments */
 
 	i = 0;
 	while (format != NULL && format[i] != '\0')
@@ -22,7 +22,7 @@ void print_all(const char * const format, ...)
 		{
 			case 'i':
 				printf("%d", va_arg(type, int));
-				stats = 0;
+				stats = 0; /* check if condition has been met */
 				break;
 			case 'f':
 				printf("%f", va_arg(type, double));
@@ -42,10 +42,10 @@ void print_all(const char * const format, ...)
 				stats = 1;
 				break;
 		}
-		if (format[i + 1] != '\0' && stats == 0)
+		if (format[i + 1] != '\0' && stats == 0) /* if not NULL */
 			printf(", ");
-		i++;
+		i++; /* update step of iterated var */
 	}
 	printf("\n");
-	va_end(type);
+	va_end(type); /* end of execution */
 }
